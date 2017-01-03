@@ -1,0 +1,17 @@
+http://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/Police_Stations/FeatureServer
+http://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/Fire_Dept_Facilities/FeatureServer
+http://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/EvacuationRoute/FeatureServer
+http://gis.phila.gov/arcgis/rest/services/PhilaGov/Police_Incidents_Part1_Part2_Last30/MapServer
+
+http://phl.maps.arcgis.com/home/webmap/viewer.html?webmap=1731f25ea9a24fb181c1049f7e94ff9a
+
+
+City_Facilities_pub_140 - athletic fields
+City_Facilities_pub_4240 - free libraries
+City_Facilities_pub_3463 - rec centers
+City_Facilities_pub_3921 - ice rinks
+City_Facilities_pub_7690 - golf courses
+
+
+
+
