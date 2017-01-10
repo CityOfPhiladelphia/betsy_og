@@ -73,20 +73,13 @@ app.map = (function ()
         arcgisUtils.createMap(
           //"1731f25ea9a24fb181c1049f7e94ff9a"
           "0878acc58e384f45be23e3f1a5120aab"
-          ,"map").then(function(response){
+          ,"map"
+        ).then(function(response){
           //update the app
           //dom.byId("title").innerHTML = response.itemInfo.item.title;
           //dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
-          _testmap = response.map;
-          app.state.response = response;
-          app.state.theMap = _testmap;
-          app.state.theLayers = response.itemInfo.itemData.operationalLayers;
-          app.state.theLayerInfo = [];
-          dojo.forEach(app.state.theLayers,function(layer){
-            if(!layer.featureCollection){
-             app.state.theLayerInfo.push({"layer":layer.layerObject,"title":layer.title});
-            }
-          });
+          var map = response.map;
+
           //add the scalebar
           /*var scalebar = new Scalebar({
             map: map,
@@ -94,14 +87,29 @@ app.map = (function ()
           });*/
           //add the legend. Note that we use the utility method getLegendLayers to get
           //the layers to display in the legend from the createMap response.
-          /*
+
           var legendLayers = arcgisUtils.getLegendLayers(response);
+          //console.log('legendLayers is ', legendLayers);
           var legendDijit = new Legend({
             map: map,
             layerInfos: legendLayers
           },"legend");
-          legendDijit.startup();
-          */
+          //console.log('legendDijit is ', legendDijit);
+          //legendDijit.startup();
+          //console.log('legendDijit started up');
+
+
+          //app.state.response = response;
+          //app.state.theMap = _testmap;
+          app.state.theLayers = response.itemInfo.itemData.operationalLayers;
+          app.state.theLayerInfo = [];
+          dojo.forEach(app.state.theLayers,function(layer){
+            if(!layer.featureCollection){
+             app.state.theLayerInfo.push({"layer":layer.layerObject,"title":layer.title});
+            }
+          });
+
+
           app.config.agoStuff = {}
 
           console.log('on FIRST FIRST forEach which is ', app.state.theLayers.length, ' long');
@@ -156,9 +164,9 @@ app.map = (function ()
               ul = $('<ul class="no-bullet">');
 
             _.forEach(app.config.csv[category.replace(/\s+/g, '')], function(layer, i) {
-              console.log(i.replace(/\s+/g, ''));
+              //console.log(i.replace(/\s+/g, ''));
               var agoInfo = app.config.agoStuff[i.replace(/\s+/g, '')]
-              console.log(agoInfo);
+              //console.log(agoInfo);
               var li = $('<li>'),
                 label = $('<label for="checkbox-'+i+'">'),
                 //input = $('<input id="checkbox-'+layer.Raw_name.substr(layer.Raw_name.indexOf('.')+1)+'" name="checkbox" type="checkbox">');
