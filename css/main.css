@@ -279,3 +279,14 @@ table {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
+
+#info {
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  z-index: 99;
+  opacity: 0.9;
+  background-color: whitesmoke;
+  border-bottom-left-radius: 8px;
+  padding: 0px 0px 0px 10px;
+}

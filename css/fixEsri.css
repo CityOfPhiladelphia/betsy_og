@@ -1,0 +1,20 @@
+
+/*.esriLegendLayerLabel {
+    display: none;
+}*/
+
+.esriLegendService table {
+  background-color: red
+}
+
+.esriLegendLayerLabel tbody {
+  background-color: red
+}
+
+.esriLegendLayerLabel tr {
+  background-color: blue
+}
+
+.esriLegendLayerLabel td {
+  background-color: green
+}

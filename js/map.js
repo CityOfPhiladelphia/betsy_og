@@ -85,17 +85,34 @@ app.map = (function ()
             map: map,
             scalebarUnit: "english"
           });*/
+
+          /*map.on("layers-add-result", function (evt) {
+            var layerInfo = arrayUtils.map(evt.layers, function (layer, index) {
+              return {layer:layer.layer, title:layer.layer.name};
+            });
+            console.log('layerInfo is ', layerInfo)
+            if (layerInfo.length > 0) {
+              var legendDijit = new Legend({
+                map: map,
+                layerInfos: layerInfo
+              }, "map");
+              console.log('legendDijit is ', legendDijit);
+              legendDijit.startup();
+              console.log('legendDijit.startup() occurred');
+            }
+          });*/
+
           //add the legend. Note that we use the utility method getLegendLayers to get
           //the layers to display in the legend from the createMap response.
-
           var legendLayers = arcgisUtils.getLegendLayers(response);
           //console.log('legendLayers is ', legendLayers);
           var legendDijit = new Legend({
-            map: map,
-            layerInfos: legendLayers
-          },"legend");
+            map: map
+            ,layerInfos: legendLayers
+            //,arrangement: esri.dijit.Legend.ALIGN_RIGHT
+          },"legendDiv");
           //console.log('legendDijit is ', legendDijit);
-          //legendDijit.startup();
+          legendDijit.startup();
           //console.log('legendDijit started up');
 
 
