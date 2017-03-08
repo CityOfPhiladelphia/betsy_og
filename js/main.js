@@ -126,17 +126,17 @@ var app = (function ()
         };
         switch (row.Dir) {
           case 'A':
-            result[row.Category.replace(/\s+/g, '')][row.Display_name.substr(row.Display_name.indexOf('.')+1)] = row;
-            //app.config.overlays[row.Display_name.substr(row.Display_name.indexOf('.')+1)+'Url'] = app.config.esri.AGOUrl + (row.Display_name.substr(row.Display_name.indexOf('.')+1) + '/FeatureServer/0');
+            result[row.Category.replace(/\s+/g, '')][row.Raw_name.substr(row.Raw_name.indexOf('.')+1)] = row;
+            app.config.overlays[row.Raw_name.substr(row.Raw_name.indexOf('.')+1)+'Url'] = app.config.esri.AGOUrl + (row.Raw_name.substr(row.Raw_name.indexOf('.')+1) + '/FeatureServer/0');
             break;
           case 'G':
-            result[row.Category.replace(/\s+/g, '')][row.Display_name.substr(row.Display_name.indexOf('.')+1)] = row;
-            //app.config.overlays[row.Display_name.substr(row.Display_name.indexOf('.')+1)+'Url'] = row.gisphilagov;
+            result[row.Category.replace(/\s+/g, '')][row.Raw_name.substr(row.Raw_name.indexOf('.')+1)] = row;
+            app.config.overlays[row.Raw_name.substr(row.Raw_name.indexOf('.')+1)+'Url'] = row.gisphilagov;
             break;
           case 'AQ':
-            //result[row.Category.replace(/\s+/g, '')][row.Display_name.substr(row.Display_name.indexOf('.')+1)] = row;
+            //result[row.Category.replace(/\s+/g, '')][row.Raw_name.substr(row.Raw_name.indexOf('.')+1)] = row;
             result[row.Category.replace(/\s+/g, '')][row.Display_name.replace(/\s+/g, '')] = row;
-            //app.config.overlays[row.Display_name.replace(/\s+/g, '')+'Url'] = app.config.esri.AGOUrl + (row.Display_name.substr(row.Display_name.indexOf('.')+1) + '/FeatureServer/0');
+            app.config.overlays[row.Display_name.replace(/\s+/g, '')+'Url'] = app.config.esri.AGOUrl + (row.Raw_name.substr(row.Raw_name.indexOf('.')+1) + '/FeatureServer/0');
             break;
           case 'N':
             //console.log('got to an N');
@@ -145,7 +145,7 @@ var app = (function ()
 
         }
         //result[row.Category.replace(/\s+/g, '')][row.Display_name.replace(/\s+/g, '')] = row;
-        //app.config.overlays[row.Display_name.replace(/\s+/g, '')+'Url'] = app.config.esri.AGOUrl + (row.Display_name.substr(row.Display_name.indexOf('.')+1) + '/FeatureServer/0');
+        //app.config.overlays[row.Display_name.replace(/\s+/g, '')+'Url'] = app.config.esri.AGOUrl + (row.Raw_name.substr(row.Raw_name.indexOf('.')+1) + '/FeatureServer/0');
       });
       return result;
     },
@@ -179,7 +179,7 @@ var app = (function ()
           _.forEach(app.config.csv[category.replace(/\s+/g, '')], function(layer, i) {
             var li = $('<li>'),
               label = $('<label for="checkbox-'+i+'">'),
-              input = $('<input id="checkbox-'+layer.Display_name.substr(layer.Display_name.indexOf('.')+1)+'" name="checkbox" type="checkbox">');
+              input = $('<input id="checkbox-'+layer.Raw_name.substr(layer.Raw_name.indexOf('.')+1)+'" name="checkbox" type="checkbox">');
             label.append(input);
             label.append(layer.Display_name);
             li.append(label);
@@ -592,7 +592,7 @@ var app = (function ()
       var liAddressKey = aisProps.li_address_key,
           liDeferreds;
       // create an array of Deferred objects for each l&i request
-      /*liDeferreds =_.map(app.config.li.socrataIds, function (liSocrataId, liStateKey) {
+      liDeferreds =_.map(app.config.li.socrataIds, function (liSocrataId, liStateKey) {
             var url = '//data.phila.gov/resource/' + liSocrataId + '.json',
                 params = {addresskey: liAddressKey};
             return $.ajax({
@@ -612,7 +612,7 @@ var app = (function ()
                 console.log('li error', err);
               },
             });
-          });*/
+          });
       // fire deferreds
       // this is nice and elegant but the callback is firing before the
       // individual callbacks have completed. commenting out for now.
@@ -638,9 +638,9 @@ var app = (function ()
       else if (aisParcelId) {
         app.getParcelById(aisParcelId, waterParcelId, function () {
           //console.log('got parcel by id', app.state.dor);
-          //app.renderParcelTopic();
-          //console.log('getTopics is calling drawParcel');
-          //app.map.drawParcel();
+          app.renderParcelTopic();
+          console.log('getTopics is calling drawParcel');
+          app.map.drawParcel();
         });
       }
 
@@ -664,13 +664,13 @@ var app = (function ()
       /*
       ZONING
       */
-      /*var zoningBaseQuery = L.esri.query({url: '//gis.phila.gov/arcgis/rest/services/PhilaGov/ZoningMap/MapServer/6/'});
+      var zoningBaseQuery = L.esri.query({url: '//gis.phila.gov/arcgis/rest/services/PhilaGov/ZoningMap/MapServer/6/'});
       zoningBaseQuery.contains(aisGeom);
       zoningBaseQuery.run(app.didGetZoningBaseResult);
 
       var zoningOverlayQuery = L.esri.query({url: '//gis.phila.gov/arcgis/rest/services/PhilaGov/ZoningMap/MapServer/1'});
       zoningOverlayQuery.contains(aisGeom);
-      zoningOverlayQuery.run(app.didGetZoningOverlayResult);*/
+      zoningOverlayQuery.run(app.didGetZoningOverlayResult);
 
       // get scanned documents ("zoning archive")
       $.ajax({
@@ -728,7 +728,7 @@ var app = (function ()
       //   },
       // });
 
-      //app.getNearbyActivity();
+      app.getNearbyActivity();
 
       /*
       WATER
@@ -741,7 +741,7 @@ var app = (function ()
         },
         success: function (data) {
           app.state.water = JSON.parse(data);
-          //app.didGetWater();
+          app.didGetWater();
         },
         error: function (err) {
           console.log('water error', err);
@@ -777,7 +777,7 @@ var app = (function ()
 
           //console.log('elections', data);
           app.state.elections = data;
-          //app.didGetElections();
+          app.didGetElections();
 
           $('#topic-election .topic-content').show();
           $('#topic-election .topic-content-not-found').hide();
@@ -1103,7 +1103,7 @@ var app = (function ()
         },
       });
 
-      /*var parcelQuery = L.esri.query({url: app.config.esri.parcelLayerWaterUrl});
+      var parcelQuery = L.esri.query({url: app.config.esri.parcelLayerWaterUrl});
       //parcelQuery.contains(latLng);
       parcelQuery.where('PARCELID = ' + waterId)
       parcelQuery.run(function (error, featureCollection, response) {
@@ -1123,7 +1123,7 @@ var app = (function ()
         app.state.waterGIS = featureCollection;
         // if there's a callback, call it
         //callback && callback();
-      });*/
+      });
       /*$.ajax({
         url: app.config.esri.parcelLayerWaterUrl + '/query',
         data: {
@@ -1383,7 +1383,7 @@ var app = (function ()
       app.util.formatTableFields($table);
     },
 
-    /*getNearbyActivity: function () {
+    getNearbyActivity: function () {
       var $nearbyActivityType = $('#nearby-activity-type'),
           $selected = $nearbyActivityType.find(':selected'),
           label = $('#nearby-activity-type :selected').text();
@@ -1506,9 +1506,9 @@ var app = (function ()
           app.map.didMouseOffNearbyActivityRow(id);
         }
       );
-    },*/
+    },
 
-/*    didGetWater: function () {
+    didGetWater: function () {
       // the stormwater api seems to return a list of opa matches
       // however, there seems to (generally) be just one item
       var data = app.state.water,  // this is actually a list of matches
@@ -1568,7 +1568,7 @@ var app = (function ()
       $('#elections-link').attr({href: seeMoreUrl});
 
       if (app.state.activeTopic == 'elections') app.map.addElectionInfo();
-    },*/
+    },
   };
 })();
 
