@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+body {
+    background-color: #fff;
+    font-family: "Helvetica";
+    overflow: hidden;
+}
+#header {
+    background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #fff, #c0c0c0) repeat scroll 0 0;
+    border: 1px solid #a8a8a8;
+    height: 65px;
+    margin: 5px;
+    overflow: hidden;
+}
+.roundedCorners {
+    border-radius: 4px;
+}
+.shadow {
+    box-shadow: 4px 4px 8px #adadad;
+}
+#title {
+    color: #000;
+    font-size: 18pt;
+    font-weight: 700;
+    padding-left: 10px;
+    padding-top: 2px;
+    text-align: left;
+    text-shadow: 0 1px 0 #e5e5ee;
+}
+#subtitle {
+    color: #000;
+    font-size: small;
+    padding-left: 40px;
+    text-shadow: 0 1px 0 #e5e5ee;
+}
+#rightPane {
+    background-color: #e8e8e8;
+    border: 2px solid #b8b8b8;
+    margin: 5px;
+    width: 20%;
+}
+#map {
+    background-color: #fff;
+    border: 2px solid #b8b8b8;
+    margin: 5px;
+    padding: 0;
+}
+/*.esriLegendServiceLabel {
+    display: none;
+}*/
