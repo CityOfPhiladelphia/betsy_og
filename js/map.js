@@ -1,4 +1,3 @@
-
 app.map = (function ()
 {
   // the leaflet map object
