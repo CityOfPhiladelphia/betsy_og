@@ -50,7 +50,7 @@ header.site-header > .row:last-of-type {
 #container {
     /*height: 100%;*/
     position: absolute;
-    top: 127px;
+    top: 88px;
     right: 0;
     left: 0;
     bottom: 0;
@@ -278,4 +278,15 @@ table {
     background: rgba(255,255,255,1);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
+}
+
+#info {
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  z-index: 99;
+  opacity: 0.9;
+  background-color: whitesmoke;
+  border-bottom-left-radius: 8px;
+  padding: 0px 0px 0px 10px;
 }
