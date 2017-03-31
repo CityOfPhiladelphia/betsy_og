@@ -1,6 +1,5 @@
 /* global L, _, $, history */
 // https://www.youtube.com/watch?v=JFAcOnhcpGA
-
 /*
 NOTE: this is just a demo - lots of jQuery soup ahead :)
 */
