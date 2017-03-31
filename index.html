@@ -8,12 +8,12 @@
         <title>Betsy | phila.gov</title>
         <link rel='icon' type='image/x-icon' href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
         <meta name="description" content="">
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//cityofphiladelphia.github.io/patterns/dist/1.3.0/css/patterns.css">
         <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css" />
-        <!--<link rel="stylesheet" href="//js.arcgis.com/4.2/esri/css/main.css">-->
-        <link rel="stylesheet" href="//js.arcgis.com/3.19/dijit/themes/claro/claro.css">
-        <link rel="stylesheet" href="//js.arcgis.com/3.19/esri/css/esri.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
@@ -49,7 +49,7 @@
                   <div class="page-title-container">
                     <a href="#/">
                       <h1 class="page-title">Betsy
-                        <span id="demo-badge">DEMO</span>
+                        <span id="demo-badge">PROOF-OF-CONCEPT</span>
                       </h1>
                       <!--<h2 class="page-subtitle">Explore and visualize addresses in the City of Philadelphia.</h2>-->
                       <!-- <h2 class="page-subtitle">Philadelphia in 360 Degrees: Data, Street and Sky [Demo]</h2> -->
@@ -67,7 +67,7 @@
 
             <div id="container" class="row collapse">
                 <!-- TOPIC PANEL-->
-                <div id="topic-panel" class="large-8 columns">
+                <div id="topic-panel" class="large-6 columns">
                     <!-- multiple address modal -->
                     <div id="addressModal" class="reveal" data-reveal aria-labelledby="modal-title" aria-hidden="true" role="dialog">
                         <h1 id="addressModal-title">Select Address</h1>
@@ -98,8 +98,9 @@
 
 
                 <!--RIGHT PANEL-->
-                <div id="map-panel" class="large-16 columns">
+                <div id="map-panel" class="large-18 columns">
                     <div id="map"></div>
+                    <div id="info"><div id="legendDiv"></div></div>
                 </div>
             </div>
         </div><!-- End #page -->
@@ -132,10 +133,26 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
         <script src="//momentjs.com/downloads/moment.min.js"></script>
-        <!--<script src="//js.arcgis.com/4.2/"></script>-->
-        <script src="//js.arcgis.com/3.19/"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+        <script src="//unpkg.com/esri-leaflet@2.0.7"></script>
+        <!-- Load Leaflet Label from GitHub -->
+        <script src="https://leaflet.github.io/Leaflet.label/leaflet.label.js"></script>
+        <!-- Load Leaflet Heat from CDN -->
+        <script src="https://cdn.rawgit.com/Leaflet/Leaflet.heat/gh-pages/dist/leaflet-heat.js"></script>
+        <!-- Load Heatmap Feature Layer from CDN -->
+        <script src="https://cdn.jsdelivr.net/leaflet.esri.heatmap-feature-layer/2.0.0-beta.1/esri-leaflet-heatmap-feature-layer.js"></script>
+         <!-- Load Esri Leaflet Renderers from CDN -->
+         <script src="http://cdn.jsdelivr.net/leaflet.esri.renderers/2.0.2/esri-leaflet-renderers.js"></script>
+         <!-- Load Vector Icon from GitHub -->
+         <script src="https://muxlab.github.io/Leaflet.VectorIcon/L.VectorIcon.js"></script>
+         <!-- Load Leaflet Omnivore -->
+         <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+         <!-- Load L.esri.WebMap -->
+         <script src="https://cdn.jsdelivr.net/leaflet.esri.webmap/0.4.0/esri-leaflet-webmap.js"></script>
+         <script src="https://unpkg.com/esri-leaflet-legend@2.0.0/dist/esri-leaflet-legend.js"></script>
 
         <!-- JS: LOCAL -->
+        <script src="config/config.js"></script>
         <script src="js/main.js"></script>
         <script src="js/util.js"></script>
         <script src="js/map.js"></script>
