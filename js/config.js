@@ -224,11 +224,6 @@ var app = app || {};
         type: 'overlay',
         zIndex: 4,
       },
-      regmap: {
-        url: '//gis.phila.gov/arcgis/rest/services/DOR_ParcelExplorer/rtt_basemap/MapServer/0',
-        type: 'overlay',
-        zIndex: 4,
-      },
     },
 
     // this is a mapping of layer names => options (which get passed directly
@@ -273,9 +268,6 @@ var app = app || {};
       }
     },
     otherLayers: {
-      parcelLayerDOR: {
-        url: '//gis.phila.gov/arcgis/rest/services/DOR_ParcelExplorer/rtt_basemap/MapServer/24',
-      },
       parcelLayerWater: {
         url: '//gis.phila.gov/arcgis/rest/services/Water/pv_data/MapServer/0',
       },
@@ -300,9 +292,7 @@ var app = app || {};
 
   dor: {
     documents: {
-      documentIdQueryUrl: '//ase.phila.gov/arcgis/rest/services/RTT/MapServer/0/query',
-      documentUrl: 'http://pdx-app01/recorder/eagleweb/viewDoc.jsp?node=DOCC',
-      seeMoreUrl: 'http://170.115.71.250/picris/documentSearch.jsp',
+      
     },
   },
 }
